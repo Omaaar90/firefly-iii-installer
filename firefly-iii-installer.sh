@@ -48,7 +48,7 @@ sed -i "s|MYSQL_PASSWORD=.*|MYSQL_PASSWORD=$DB_PASSWORD|" .db.env
 
 # Step 5: Start Firefly III and the database
 echo "Starting Firefly III and the database..."
-docker-compose -f docker-compose.yml up -d --pull=always app db
+docker compose -f docker-compose.yml up -d --pull=always app db
 
 # Wait for Firefly III to initialize
 echo "Waiting for Firefly III to initialize (this may take a minute)..."
@@ -76,7 +76,7 @@ if [[ $SETUP_IMPORTER == "y" ]]; then
 
   # Start the Data Importer
   echo "Starting the Data Importer..."
-  docker-compose -f docker-compose.yml up -d importer
+  docker compose -f docker-compose.yml up -d importer
 fi
 
 # Step 7: Ask if the user wants to set up the cron job
@@ -91,7 +91,7 @@ if [[ $SETUP_CRON == "y" ]]; then
 
   # Start the cron service
   echo "Starting the cron service..."
-  docker-compose -f docker-compose.yml up -d cron
+  docker compose -f docker-compose.yml up -d cron
 fi
 
 # Step 8: Print setup completion message
